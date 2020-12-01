@@ -100,7 +100,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style type="text/css">
-        body{ font: 14px sans-serif; }
+        body{ 
+font: 14px sans-serif
+        
+         }
         .wrapper{ width: 350px; padding: 20px; }
     </style>
 </head>
