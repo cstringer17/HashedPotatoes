@@ -5,11 +5,23 @@ define('DB_USERNAME', 'root');
 define('DB_PASSWORD', '');
 define('DB_NAME', 'hashedpotatoes');
  
+
+
 /* Attempt to connect to MySQL database */
+
 $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
- 
-// Check connection
-if($mysqli === false){
-    die("ERROR: Could not connect. " . $mysqli->connect_error);
-}
+
+if ($mysqli -> connect_errno) {
+    alert("Failed to connect to MySQL: " . $mysqli -> connect_error);
+    exit();
+  }
+  function alert($msg) {
+    echo "<script type='text/javascript'>alert('$msg');</script>";
+    }
+
+  $mysqli -> close();
+
+  
+
+
 ?>
