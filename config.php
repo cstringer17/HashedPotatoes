@@ -16,5 +16,4 @@ if ($mysqli -> connect_errno) {
     exit();
   }
 
-  $mysqli -> close();
 ?>
