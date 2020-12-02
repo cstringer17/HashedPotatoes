@@ -1,0 +1,74 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "08f7e644c8d1d94004b299502b18861c",
+    "packages": [
+        {
+            "name": "rych/phpass",
+            "version": "v3.0.0beta1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rchouinard/phpass.git",
+                "reference": "f94d30f6ea9ead98ea9497818cbbb28db730ea7d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rchouinard/phpass/zipball/f94d30f6ea9ead98ea9497818cbbb28db730ea7d",
+                "reference": "f94d30f6ea9ead98ea9497818cbbb28db730ea7d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-hash": "*",
+                "php": ">=5.3.8"
+            },
+            "suggest": {
+                "ext-mcrypt": "The Mcrypt extension is used as a source of cryptographically strong random data in the absence of ext-openssl.",
+                "ext-openssl": "The OpenSSL extension is used as the default source of cryptographically strong random data."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "PHPassLib": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ryan Chouinard",
+                    "email": "rchouinard@gmail.com",
+                    "homepage": "http://ryanchouinard.com"
+                }
+            ],
+            "description": "PHP Password Library: Easy, secure password management for PHP",
+            "homepage": "https://github.com/rchouinard/phpass",
+            "keywords": [
+                "cryptography",
+                "password",
+                "security"
+            ],
+            "support": {
+                "issues": "https://github.com/rchouinard/phpass/issues",
+                "source": "https://github.com/rchouinard/phpass/tree/v3.0.0beta1",
+                "wiki": "https://github.com/rchouinard/phpass/wiki"
+            },
+            "time": "2012-08-14T03:45:21+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "rych/phpass": 10
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": [],
+    "plugin-api-version": "2.0.0"
+}
