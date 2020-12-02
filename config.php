@@ -11,9 +11,8 @@ define('DB_NAME', 'hashedpotatoes');
 
 $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
-if ($mysqli -> connect_errno) {
-    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-    exit();
-  }
-
+// Check connection
+if($mysqli === false){
+  die("ERROR: Could not connect. " . $mysqli->connect_error);
+}
 ?>
