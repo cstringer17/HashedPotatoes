@@ -12,16 +12,9 @@ define('DB_NAME', 'hashedpotatoes');
 $mysqli = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
 
 if ($mysqli -> connect_errno) {
-    alert("Failed to connect to MySQL: " . $mysqli -> connect_error);
+    echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
     exit();
   }
-  function alert($msg) {
-    echo "<script type='text/javascript'>alert('$msg');</script>";
-    }
 
   $mysqli -> close();
-
-  
-
-
 ?>
