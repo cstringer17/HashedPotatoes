@@ -131,9 +131,6 @@ if(!is_file($profilePicture)){
 
 </html>
 <script>
-    /*  ==========================================
-    SHOW UPLOADED IMAGE
-* ========================================== */
     function readURL(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
@@ -151,10 +148,6 @@ if(!is_file($profilePicture)){
             readURL(input);
         });
     });
-
-    /*  ==========================================
-        SHOW UPLOADED IMAGE NAME
-    * ========================================== */
     var input = document.getElementById('upload');
     var infoArea = document.getElementById('upload-label');
 
