@@ -14,4 +14,7 @@ CREATE TABLE users (
     profilepicture VARCHAR(255) NOT NULL
 );
 
-GRANT SELECT, INSERT, DELETE UPDATE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
+GRANT SELECT ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
+GRANT INSERT ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
+GRANT DELETE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
+GRANT UPDATE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;

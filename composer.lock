@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08f7e644c8d1d94004b299502b18861c",
+    "content-hash": "83ae853b944ad1857e9ad358be82d91c",
     "packages": [
         {
             "name": "rych/phpass",
