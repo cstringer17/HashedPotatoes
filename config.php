@@ -1,8 +1,8 @@
 <?php
 /* Database credentials. */
 define('DB_SERVER', 'localhost');
-define('DB_USERNAME', 'root');
-define('DB_PASSWORD', '');
+define('DB_USERNAME', 'test');
+define('DB_PASSWORD', 'qwert_1337');
 define('DB_NAME', 'hashedpotatoes');
  
 
