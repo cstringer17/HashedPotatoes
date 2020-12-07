@@ -17,11 +17,19 @@ $param_id = $_SESSION["id"];
 $profilePicture = "../images/placeholder-profile.jpg";
 
 $sql = "SELECT profilepicture FROM users WHERE id=" . $param_id;
-$result = $mysqli->query($sql);
-while ($row = mysqli_fetch_array($result)) {
-    $profilePicture = $row["profilepicture"];
+//prepare and execute statement
+if ($stmt = $mysqli->prepare($sql)) {
+    $stmt->execute();
+    $result = $stmt->get_result();
 }
-if(!is_file($profilePicture)){
+//get statement Result and set the Profile picture accordingly
+while ($row = mysqli_fetch_array($result)) {
+    foreach ($row as $r) {
+        $profilePicture = $r;
+    }
+}
+
+if (!is_file($profilePicture)) {
     $profilePicture = "../images/placeholder-profile.jpg";
 }
 
