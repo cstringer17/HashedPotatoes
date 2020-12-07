@@ -1,6 +1,6 @@
 {
 
-	"name": "SomethingGreat/HashedPotatoes",
+	"name": "somethinggreat/hashedpotatoes",
     "description": "Just some school work.",
     "require": {
         "rych/phpass": "3.0.*@beta"
