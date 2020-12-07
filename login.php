@@ -32,9 +32,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["password"]);
     }
     
-    // Validate credentials
+    // Check if Input is empty
     if(empty($username_err) && empty($password_err)){
-        // Prepare a select statement
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
         
         if($stmt = $mysqli->prepare($sql)){
@@ -48,7 +47,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if($stmt->execute()){
                 // Store result
                 $stmt->store_result();
-                
                 // Check if username exists, if yes then verify password
                 if($stmt->num_rows == 1){                    
                     // Bind result variables
