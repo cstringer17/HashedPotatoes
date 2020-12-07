@@ -9,7 +9,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 }
 
 //Prepare stmt
-require_once "../config.php";
+require_once "config.php";
 
 $param_id = $_SESSION["id"];
 $profilePicture = "../images/placeholder-profile.jpg";

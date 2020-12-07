@@ -1,12 +1,7 @@
 <?php
-// Initialize the session
-session_start();
 
-// Check if the user is logged in, if not then redirect him to login page
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: login.php");
-    exit;
-}
+session_start();
+require_once("tools/loginCheck.php");
 ?>
 
 <!DOCTYPE html>
@@ -25,12 +20,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 </head>
 
 <body>
-
-
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to Hashed Potatoes</h1>
     </div>
-
     <p>
         <a href="profile.php" class="btn btn-dark">Profile</a>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
