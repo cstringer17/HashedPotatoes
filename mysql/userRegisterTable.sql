@@ -4,8 +4,6 @@ DROP DATABASE hashedpotatoes;
 
 CREATE DATABASE hashedpotatoes CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
-GRANT INSERT UPDATE DELETE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
-
 USE hashedpotatoes;
 
 CREATE TABLE users (
@@ -15,3 +13,8 @@ CREATE TABLE users (
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     profilepicture VARCHAR(255) NOT NULL
 );
+
+GRANT SELECT ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
+GRANT INSERT ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
+GRANT UPDATE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
+GRANT DELETE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
