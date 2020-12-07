@@ -8,8 +8,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
-//Get Profile picture
-
 //Prepare stmt
 require_once "../config.php";
 

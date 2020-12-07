@@ -1,5 +1,5 @@
 <html>
 <?php
-header('Location: welcome.php');
+header('Location: /pages/welcome.php');
 exit;
 ?>
