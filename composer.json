@@ -1,4 +1,7 @@
 {
+
+	"name": "HashedPotatoes",
+    "description": "Just some school work.",
     "require": {
         "rych/phpass": "3.0.*@beta"
     }
