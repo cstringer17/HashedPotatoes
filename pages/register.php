@@ -10,10 +10,12 @@ $username_err = $password_err = $confirm_password_err = "";
 // Check if request method is POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    printf(strlen(trim($_POST["username"])));
+
     // Validate username
     if (empty(trim($_POST["username"]))) {
         $username_err = "Please enter a username.";
-    } else if (strlen(trim($_POST["username"])) <= 50) {
+    } elseif (strlen(trim($_POST["username"])) > 50) {
         $username_err = "Username must be less that 50 characters.";
     } else {
         // Prepare a select statement
@@ -24,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bind_param("s", $param_username);
 
             // Set parameters
-            $param_username = trim($_POST["username"]);
+            $param_username = htmlentities(trim($_POST["username"]));
 
             // Attempt to execute the prepared statement
             if ($stmt->execute()) {
@@ -50,7 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password_err = "Please enter a password.";
     } elseif (strlen(trim($_POST["password"])) < 6) {
         $password_err = "Password must have atleast 6 characters.";
-    } else {
+    } elseif (strlen(trim($_POST["password"])) > 255){
+        $password_err = "The max password length is 255 characters!";
+    } else{
         $password = trim($_POST["password"]);
     }
 

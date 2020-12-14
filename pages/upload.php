@@ -5,7 +5,7 @@ $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 session_start();
-require_once "../config.php";
+require_once "config.php";
 // Check if image file is a actual image or fake image
 if (isset($_POST["submit"])) {
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);

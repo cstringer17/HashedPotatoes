@@ -122,7 +122,7 @@ if (!is_file($profilePicture)) {
             </div>
         </div>
         <br>
-        <a href="../welcome.php" class="btn btn-dark">Back</a>
+        <a href="welcome.php" class="btn btn-dark">Back</a>
         <button class="btn btn-dark" type="submit">Save</button>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
     </form>
