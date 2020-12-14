@@ -11,5 +11,5 @@ if(!$uppercase || !$lowercase || !$number || !$specialChars || strlen($password)
     return false; 
 }else{ 
     return true;
- }
+ } 
 }

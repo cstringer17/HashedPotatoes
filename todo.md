@@ -34,5 +34,6 @@ Welche Arbeiten müssen abgearbeitet werden?
 - Sessionhandling (DONE)
 	- Dokument zum Thema Session Handling
 
+- Readme
 
 - HTTPS

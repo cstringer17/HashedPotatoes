@@ -132,46 +132,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             height: 0.5em;
             background: none;
             background-color: rgba(0, 0, 0, 0.1);
+            opacity: 0.7;
         }
 
-        meter::-webkit-meter-bar {
-            background: none;
-            background-color: rgba(0, 0, 0, 0.1);
-        }
+       
 
-
-        meter[value="1"]::-webkit-meter-optimum-value {
-            background: red;
-        }
-
-        meter[value="2"]::-webkit-meter-optimum-value {
-            background: yellow;
-        }
-
-        meter[value="3"]::-webkit-meter-optimum-value {
-            background: orange;
-        }
-
-        meter[value="4"]::-webkit-meter-optimum-value {
-            background: green;
-        }
-
-
-        meter[value="1"]::-moz-meter-bar {
-            background: red;
-        }
-
-        meter[value="2"]::-moz-meter-bar {
-            background: yellow;
-        }
-
-        meter[value="3"]::-moz-meter-bar {
-            background: orange;
-        }
-
-        meter[value="4"]::-moz-meter-bar {
-            background: green;
-        }
     </style>
 </head>
 
@@ -189,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label>Password</label>
                 <input id="password" type="password" name="password" required="true" maxlength="255" class="form-control" value="<?php echo $password; ?>">
                 <span class="help-block"><?php echo $password_err; ?></span>
-                <meter max="4" id="password-strength-meter"></meter>
+                <meter max="5" id="password-strength-meter"></meter>
                 <p id="password-strength-text"></p>
             </div>
             <div class="form-group <?php echo (!empty($confirm_password_err)) ? 'has-error' : ''; ?>">
@@ -216,6 +181,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         3: "Good",
         4: "Strong"
     }
+
+    var color ={
+        0: "Red",
+        1: "Orange",
+        2: "Yellow",
+        3: "Yellow",
+        4: "Green"
+    };
     var password = document.getElementById('password');
     var meter = document.getElementById('password-strength-meter');
     var text = document.getElementById('password-strength-text');
@@ -226,6 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Update the password strength meter
         meter.value = result.score;
+        meter.style.backgroundColor = color[result.score];
 
         // Update the text indicator
         if (val !== "") {
