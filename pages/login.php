@@ -3,7 +3,10 @@
 session_start();
 
 // Check session for user
-require("tools/loginCheck.php");
+if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+    header("location: welcome.php");
+    exit;
+}
 
 // Include config file
 require_once "config.php";
