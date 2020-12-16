@@ -18,3 +18,18 @@ GRANT SELECT ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
 GRANT INSERT ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
 GRANT DELETE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
 GRANT UPDATE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
+
+
+CREATE TABLE hashedpotatoes.passwordentrys (
+  idpasswordEntrys INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(45) NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  url VARCHAR(255) NULL,
+  userid INT NULL,
+  PRIMARY KEY (idpasswordEntrys),
+  INDEX userid_idx (userid ASC) ,
+  CONSTRAINT userid
+    FOREIGN KEY (userid)
+    REFERENCES hashedpotatoes.users (id)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
