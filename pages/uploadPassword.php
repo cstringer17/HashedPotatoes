@@ -24,8 +24,6 @@ if ($stmt = $mysqli->prepare($sql)) {
 
     // Attempt to execute the prepared statement
     if ($stmt->execute()) {
-        // Redirect to login page
-        echo "password saved";
         header("location: passwordmanager.php");
     } else {
         echo "Something went wrong. Please try again later.";
@@ -57,6 +55,7 @@ if ($stmt = $mysqli->prepare($sql)) {
 <body>
 
 <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Do you want to upload a password?</h1>
+<a href="passwordmanager.php" class="btn btn-dark">Back to PWManager</a>
 <form action="uploadPassword.php" method="post" enctype="multipart/form-data">
         <div class="container">
             <div class="row">

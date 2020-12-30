@@ -40,8 +40,8 @@ function createCard($row)
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. These are your passwords</h1>
         <br>
-        <button class="btn btn-dark" href="uploadPassword.php">New Password</button>
-        <button class="btn btn-dark" href="welcome.php" onclick="console.log('kdjhdk');">Back to Home</button>
+        <a class="btn btn-dark" href="uploadPassword.php">New Password</a>
+        <a class="btn btn-dark" href="welcome.php">Back to Home</a>
     </div>
 
     <?php
