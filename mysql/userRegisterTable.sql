@@ -1,4 +1,4 @@
-DROP USER 'test'@'%' IDENTIFIED BY 'qwert_1337';
+DROP USER 'test'@'%';
 
 CREATE USER 'test'@'%' IDENTIFIED BY 'qwert_1337';
 
