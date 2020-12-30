@@ -7,9 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 require_once "config.php"; 
 //data to enter
 
-
-
-
 $sql = "INSERT INTO passwordentrys (name, password, url, userid, username) VALUES (?, ?, ?, ? ,?)";
 
 
@@ -28,6 +25,7 @@ if ($stmt = $mysqli->prepare($sql)) {
     // Attempt to execute the prepared statement
     if ($stmt->execute()) {
         // Redirect to login page
+        echo "password saved";
         header("location: passwordmanager.php");
     } else {
         echo "Something went wrong. Please try again later.";
@@ -35,11 +33,9 @@ if ($stmt = $mysqli->prepare($sql)) {
     // Close statement
     $stmt->close();
 }
+}else{
+    echo "not post";
 }
-
-
-
-
 
 ?>
 
