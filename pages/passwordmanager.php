@@ -4,30 +4,23 @@ require_once "config.php";
 session_start();
 
 if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  exit();
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    exit();
 }
 
-if ($result = mysqli_query($mysqli, "SELECT * FROM passwordentrys WHERE userid = " . $_SESSION["id"] )) {
-    while($row = mysqli_fetch_array($result))
-     {
-        createCard($row);
-     }
-}else{
-    echo "error";
-}
-
-mysqli_close($mysqli);
 
 
-function createCard($row){
+
+function createCard($row)
+{
     echo '<div class="card" style="width: 18rem;">';
     echo '<div class="card-body">';
+    echo '<img src="//logo.clearbit.com/' . $row["url"] . '?size=80" class="rounded"><br>';
     echo '<h5 class="card-title">' . $row["name"] . '</h5>';
     echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["url"] .  '</h6>';
     echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["username"] .  '</h6>';
-    echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["password"] .  '</h6>';
-    echo '</div></div>';
+    echo '<h6 class="card-subtitle mb-2 text-muted" onclick="copyPassword(this)">' . $row["password"] .  '</h6>';
+    echo '</div></div><br>';
 }
 ?>
 
@@ -47,4 +40,29 @@ function createCard($row){
 </head>
 
 <body>
+    <div class="page-header">
+        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. These are your passwords</h1>
+        <br>
+        <button class="btn btn-dark" href="uploadPassword.php">New Password</button>
+    </div>
+
+    <?php
+    if ($result = mysqli_query($mysqli, "SELECT * FROM passwordentrys WHERE userid = " . $_SESSION["id"])) {
+
+        while ($row = mysqli_fetch_array($result)) {
+            createCard($row);
+        }
+    } else {
+        echo "error";
+    }
+
+    mysqli_close($mysqli);
+
+    ?>
+    
+
+    <a href="https://clearbit.com">Logos provided by Clearbit</a>
 </body>
+<script>
+    
+</script>
