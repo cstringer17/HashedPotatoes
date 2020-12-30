@@ -1,3 +1,5 @@
+DROP USER 'test'@'%' IDENTIFIED BY 'qwert_1337';
+
 CREATE USER 'test'@'%' IDENTIFIED BY 'qwert_1337';
 
 DROP DATABASE hashedpotatoes;
@@ -19,12 +21,6 @@ GRANT INSERT ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
 GRANT DELETE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
 GRANT UPDATE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
 
-GRANT SELECT ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
-GRANT INSERT ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
-GRANT DELETE ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
-GRANT UPDATE ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
-
-
 CREATE TABLE hashedpotatoes.passwordentrys (
   idpasswordEntrys INT NOT NULL AUTO_INCREMENT,
   name VARCHAR(45) NOT NULL,
@@ -38,3 +34,8 @@ CREATE TABLE hashedpotatoes.passwordentrys (
     REFERENCES hashedpotatoes.users (id)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
+
+GRANT SELECT ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
+GRANT INSERT ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
+GRANT DELETE ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
+GRANT UPDATE ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
