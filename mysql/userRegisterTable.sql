@@ -19,6 +19,11 @@ GRANT INSERT ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
 GRANT DELETE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
 GRANT UPDATE ON hashedpotatoes.users TO 'test'@'%' WITH GRANT OPTION;
 
+GRANT SELECT ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
+GRANT INSERT ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
+GRANT DELETE ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
+GRANT UPDATE ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
+
 
 CREATE TABLE hashedpotatoes.passwordentrys (
   idpasswordEntrys INT NOT NULL AUTO_INCREMENT,
