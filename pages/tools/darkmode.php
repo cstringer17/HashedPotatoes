@@ -11,7 +11,7 @@
     themeConfig.loadTheme = theme => {
         // custom logic
         console.log(darkSwitch);
-        var hElements = document.querySelectorAll("h1, h2, h3, h4, h5, h6")
+        var hElements = document.querySelectorAll("h1, h2, h3, h4, h5, h6, a")
 
 
 
@@ -28,7 +28,7 @@
     themeConfig.saveTheme = theme => {
         // custom logic
         console.log(darkSwitch);
-        var hElements = document.querySelectorAll("h1, h2, h3, h4, h5, h6")
+        var hElements = document.querySelectorAll("h1, h2, h3, h4, h5, h6, a")
 
 
 
