@@ -11,4 +11,9 @@ session_destroy();
 // Redirect to login page
 header("location: login.php");
 exit;
-?>
+
+// remove all session variables
+session_unset();
+
+// destroy the session
+session_destroy();

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once("config.php");
 
 // Prepare an insert statement
@@ -20,4 +20,10 @@ if ($stmt = $mysqli->prepare($sql)) {
     }
     // Close statement
     $stmt->close();
+
+    // remove all session variables
+    session_unset();
+
+    // destroy the session
+    session_destroy();
 }
