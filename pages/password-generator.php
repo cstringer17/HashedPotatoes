@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password .= $string[ord($random[$i]) % $string_length];
     }
 } else {
-    echo "not post";
+    echo "Generate a new Password!";
 }
 ?>
 
@@ -53,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <form action="welcome.php" method="post" enctype="multipart/form-data">
 
-        <input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
+        <br><input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
         <label id="counter" for="passwordlength"></label><br>
 
         <input type="checkbox" id="bigalphabet" name="bigalphabet">
