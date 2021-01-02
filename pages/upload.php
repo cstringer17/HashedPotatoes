@@ -47,8 +47,8 @@ if ($uploadOk == 0) {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     //Write $target_file to db
 
-    
-    
+
+
     //Prepare sql statement
     $sql = "UPDATE users SET profilepicture = ? WHERE id = ?";
 
@@ -62,7 +62,6 @@ if ($uploadOk == 0) {
 
       // Attempt to execute the prepared statement
       if (mysqli_stmt_execute($stmt)) {
-        
       } else {
         echo "Oops! Something went wrong. Please try again later.";
       }
@@ -82,24 +81,27 @@ if ($uploadOk == 0) {
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Profile</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css"
-        integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap-darkmode@0.7.0/dist/darktheme.css" />
 </head>
 <style type="text/css">
-    body {
-        font: 14px sans-serif;
-        text-align: center;
-        margin-top: 2em;
-    }
+  body {
+    font: 14px sans-serif;
+    text-align: center;
+    margin-top: 2em;
+  }
 </style>
+
 <body>
-    <div class="container">
-        <br>
-        <a class="btn btn-dark" href="profile.php">Back to Your Profile</a>
-    </div>
-  
+  <?php include("tools/darkmode.php")
+  ?>
+  <div class="container">
+    <br>
+    <a class="btn btn-dark" href="profile.php">Back to Your Profile</a>
+  </div>
+
 </body>
 
 </html>
