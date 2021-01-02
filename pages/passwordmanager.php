@@ -16,6 +16,8 @@ function createCard($row)
     echo '<h5 class="card-title">' . $row["name"] . '</h5>';
     echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["url"] .  '</h6>';
     echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["username"] .  '</h6>';
+    echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["password"] .  '</h6>';
+    echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["keyy"] .  '</h6>';
     echo '<h6 class="card-subtitle mb-2 text-muted" onclick="copyPassword(this)">' . decodePassword($row["password"], $row["keyy"])  .  '</h6>';
     echo '</div></div><br>';
 }
@@ -26,6 +28,7 @@ function decodePassword($encoded, $key)
     $nonce = mb_substr($decoded, 0, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, '8bit');
     $ciphertext = mb_substr($decoded, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, null, '8bit');
     $plaintext = sodium_crypto_secretbox_open($ciphertext, $nonce, $key);
+    echo $plaintext;
     return $plaintext;
 }
 ?>
@@ -47,7 +50,7 @@ function decodePassword($encoded, $key)
 </head>
 
 <body>
-<?php include("tools/darkmode.php")
+    <?php include("tools/darkmode.php")
     ?>
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. These are your passwords</h1>

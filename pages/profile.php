@@ -61,7 +61,7 @@ if (!is_file($profilePicture)) {
 </head>
 
 <body>
-<?php include("tools/darkmode.php")
+    <?php include("tools/darkmode.php")
     ?>
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. This is your Profile</h1>

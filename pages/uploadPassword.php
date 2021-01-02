@@ -67,6 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo $validationErrorText;
         }
     }
+}
 
 
 ?>
@@ -135,5 +136,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     </form>
 </body>
-
 </html>
