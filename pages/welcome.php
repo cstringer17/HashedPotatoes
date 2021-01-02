@@ -1,6 +1,10 @@
 <?php
 session_start();
 require_once("tools/loginCheck.php");
+
+
+echo "Data: " .  $_SESSION["data"];
+
 ?>
 
 <!DOCTYPE html>
