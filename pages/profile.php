@@ -30,7 +30,7 @@ while ($row = mysqli_fetch_array($result)) {
 if (!is_file($profilePicture)) {
     $profilePicture = "../images/placeholder-profile.jpg";
 }
-echo $_SESSION["id"];
+
 
 ?>
 <!DOCTYPE html>
