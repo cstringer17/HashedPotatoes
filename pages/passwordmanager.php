@@ -17,6 +17,7 @@ function createCard($row)
     echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["url"] .  '</h6>';
     echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["username"] .  '</h6>';
     echo '<h6 class="card-subtitle mb-2 text-muted" onclick="copyPassword(this)">' . decodePassword($row["password"], $row["keyy"])  .  '</h6>';
+    echo '<a href="deleteEntry.php?id=' .  $row["idpasswordEntrys"] .  '   ">Delete</a>';
     echo '</div></div><br>';
 }
 
@@ -47,7 +48,7 @@ function decodePassword($encoded, $key)
 </head>
 
 <body>
-<?php include("tools/darkmode.php")
+    <?php include("tools/darkmode.php")
     ?>
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. These are your passwords</h1>

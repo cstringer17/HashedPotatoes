@@ -49,40 +49,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-<<<<<<< HEAD
 
     <div class="card container-sm" style="width: 18rem;">
-=======
-    <form action="welcome.php" method="post" enctype="multipart/form-data">
->>>>>>> 6c01b167032d20096d023aee3e692909258847a7
+        <form action="welcome.php" method="post" enctype="multipart/form-data">
 
-        <div class="card-body">
+            <div class="card-body">
 
 
-            <form action="welcome.php" method="post" enctype="multipart/form-data">
-                <?php
+                <form action="welcome.php" method="post" enctype="multipart/form-data">
+                    <?php
 
-                if (isset($password)) {
-                    echo "<h4>" . $password . "</h4>";
-                }
-                ?>
-                <br><input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
-                <label id="counter" for="passwordlength"></label><br>
+                    if (isset($password)) {
+                        echo "<h4>" . $password . "</h4>";
+                    }
+                    ?>
+                    <br><input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
+                    <label id="counter" for="passwordlength"></label><br>
 
-                <input type="checkbox" id="bigalphabet" name="bigalphabet">
-                <label for="bigalphabet">A-Z</label><br>
+                    <input type="checkbox" id="bigalphabet" name="bigalphabet">
+                    <label for="bigalphabet">A-Z</label><br>
 
-                <input type="checkbox" id="zerotonine" name="zerotonine">
-                <label for="zerotonine"> 0-9</label><br>
+                    <input type="checkbox" id="zerotonine" name="zerotonine">
+                    <label for="zerotonine"> 0-9</label><br>
 
-                <input type="checkbox" id="specialchar" name="specialchar">
-                <label for="specialchar"> !@#$%^&*</label><br>
+                    <input type="checkbox" id="specialchar" name="specialchar">
+                    <label for="specialchar"> !@#$%^&*</label><br>
 
-                <button class="btn btn-dark" type="submit">Generate Password</button><br>
-                <br>
+                    <button class="btn btn-dark" type="submit">Generate Password</button><br>
+                    <br>
 
 
-        </div>
+            </div>
     </div>
 
     </form>
