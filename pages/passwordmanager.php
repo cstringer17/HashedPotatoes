@@ -16,8 +16,20 @@ function createCard($row)
     echo '<h5 class="card-title">' . $row["name"] . '</h5>';
     echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["url"] .  '</h6>';
     echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["username"] .  '</h6>';
-    echo '<h6 class="card-subtitle mb-2 text-muted" onclick="copyPassword(this)">' . $row["password"] .  '</h6>';
+    echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["password"] .  '</h6>';
+    echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["keyy"] .  '</h6>';
+    echo '<h6 class="card-subtitle mb-2 text-muted" onclick="copyPassword(this)">' . decodePassword($row["password"], $row["keyy"])  .  '</h6>';
     echo '</div></div><br>';
+}
+
+function decodePassword($encoded, $key)
+{
+    $decoded = base64_decode($encoded);
+    $nonce = mb_substr($decoded, 0, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, '8bit');
+    $ciphertext = mb_substr($decoded, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, null, '8bit');
+    $plaintext = sodium_crypto_secretbox_open($ciphertext, $nonce, $key);
+    echo $plaintext;
+    return $plaintext;
 }
 ?>
 
@@ -57,10 +69,10 @@ function createCard($row)
     mysqli_close($mysqli);
 
     ?>
-    
+
 
     <a href="https://clearbit.com">Logos provided by Clearbit</a>
 </body>
 <script>
-    
+
 </script>

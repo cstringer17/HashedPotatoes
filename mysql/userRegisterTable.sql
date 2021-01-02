@@ -42,3 +42,8 @@ GRANT UPDATE ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
 
 ALTER TABLE `hashedpotatoes`.`passwordentrys` 
 ADD COLUMN `username` VARCHAR(45) NULL AFTER `userid`;
+
+ALTER TABLE `hashedpotatoes`.`passwordentrys` 
+ADD COLUMN `keyy` VARCHAR(255) NULL AFTER `username`;
+
+

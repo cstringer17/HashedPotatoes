@@ -2,6 +2,7 @@
     "name": "somethinggreat/hashedpotatoes",
     "description": "Just some school work.",
     "require": {
-        "rych/phpass": "3.0.*@beta"
+        "rych/phpass": "3.0.*@beta",
+        "paragonie/sodium_compat": "^1.14"
     }
 }
