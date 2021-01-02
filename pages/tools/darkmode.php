@@ -25,9 +25,6 @@
         return 'dark';
     };
 
-
-
-
     themeConfig.saveTheme = theme => {
         // custom logic
         console.log(darkSwitch);
