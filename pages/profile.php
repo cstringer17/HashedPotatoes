@@ -128,6 +128,7 @@ if (!is_file($profilePicture)) {
         <a href="welcome.php" class="btn btn-dark">Back</a>
         <button class="btn btn-dark" type="submit">Save</button>
         <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
+        <a class="btn btn-danger" href="deleteaccount.php">Delete Account</a>
     </form>
 
 </body>
