@@ -55,41 +55,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
     <div class="card container-sm" style="width: 18rem;">
-        <form action="welcome.php" method="post" enctype="multipart/form-data">
-
-            <div class="card-body">
 
 
+        <div class="card-body">
+            <?php
+            if (isset($password)) {
+                echo '<textarea id="passwordArea" name="message" rows="4" cols="30">  '  . $password . '</textarea>';
+            }
+            ?>
+            <br>
+            <button id="success" class="btn btn-info" onclick="copypassword()">Copy text</button>
+            <br>
+            <div id="message"></div>
+            <br>
 
-                <form action="welcome.php" method="post" enctype="multipart/form-data">
-                    <?php
-                    if (isset($password)) {
-                        echo '<textarea id="myInput" name="message" rows="10" cols="30">  '  . $password . '</textarea>';
-                    }
-                    ?>
-                    <button onclick="copypassword()">Copy text</button>
-                    <br><input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
-                    <label id="counter" for="passwordlength"></label><br>
+            <form action="welcome.php" method="post" enctype="multipart/form-data">
+                <br><input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
+                <label id="counter" for="passwordlength"></label><br>
 
-                    <input type="checkbox" id="bigalphabet" name="bigalphabet">
-                    <label for="bigalphabet">A-Z</label><br>
+                <input type="checkbox" id="bigalphabet" name="bigalphabet">
+                <label for="bigalphabet">A-Z</label><br>
 
-                    <input type="checkbox" id="zerotonine" name="zerotonine">
-                    <label for="zerotonine"> 0-9</label><br>
+                <input type="checkbox" id="zerotonine" name="zerotonine">
+                <label for="zerotonine"> 0-9</label><br>
 
-                    <input type="checkbox" id="specialchar" name="specialchar">
-                    <label for="specialchar"> !@#$%^&*</label><br>
+                <input type="checkbox" id="specialchar" name="specialchar">
+                <label for="specialchar"> !@#$%^&*</label><br>
 
-                    <button class="btn btn-dark" type="submit">Generate Password</button><br>
-                    <br>
+                <button class="btn btn-dark" type="submit">Generate Password</button><br>
+                <br>
 
 
-            </div>
+        </div>
     </div>
 
 
     </form>
-
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.0.4/js/bootstrap-alert.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <script>
         var slider = document.getElementById("passwordlength");
         var output = document.getElementById("counter");
@@ -100,12 +103,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         function copypassword() {
-            var copyText = document.getElementById("myInput");
+            var copyText = document.getElementById("passwordArea");
             copyText.select();
             copyText.setSelectionRange(0, 99999);
             document.execCommand("copy");
-            alert("Copied the password");
         }
+
+        $(document).ready(function() {
+
+            $('#success').click(function(e) {
+                console.log("success");
+                e.preventDefault()
+                $('#message').html('<br><div class="alert alert-success"><button type="button" class="close close-alert" data-dismiss="alert" aria-hidden="true">×</button>Password Copied!</div>');
+            })
+        });
     </script>
 
 </body>
