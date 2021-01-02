@@ -64,9 +64,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <form action="welcome.php" method="post" enctype="multipart/form-data">
                     <?php
                     if (isset($password)) {
-                        echo "<h4>" . $password . "</h4>";
+                        echo '<textarea id="myInput" name="message" rows="10" cols="30">  '  . $password . '</textarea>';
                     }
                     ?>
+                    <button onclick="copypassword()">Copy text</button>
                     <br><input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
                     <label id="counter" for="passwordlength"></label><br>
 
@@ -96,6 +97,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         slider.oninput = function() {
             output.innerHTML = this.value;
+        }
+
+        function copypassword() {
+            var copyText = document.getElementById("myInput");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            alert("Copied the password");
         }
     </script>
 
