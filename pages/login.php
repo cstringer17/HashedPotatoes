@@ -112,6 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include("tools/darkmode.php")
     ?>
     <div class="wrapper">
+    <img src="../images/Hash_Borwn.png" alt="Hash">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
