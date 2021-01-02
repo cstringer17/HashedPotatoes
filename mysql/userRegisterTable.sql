@@ -39,3 +39,6 @@ GRANT SELECT ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
 GRANT INSERT ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
 GRANT DELETE ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
 GRANT UPDATE ON hashedpotatoes.passwordentrys TO 'test'@'%' WITH GRANT OPTION;
+
+ALTER TABLE `hashedpotatoes`.`passwordentrys` 
+ADD COLUMN `username` VARCHAR(45) NULL AFTER `userid`;
