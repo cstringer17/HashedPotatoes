@@ -29,11 +29,10 @@ require_once("tools/loginCheck.php");
     <p>
         <a href="profile.php" class="btn btn-dark">Profile</a>
         <a href="passwordmanager.php" class="btn btn-dark">PWManager</a>
-        <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
         <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
     </p>
     <?php
-    include("password-generator.php")
+    include("tools/password-generator.php")
     ?>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
