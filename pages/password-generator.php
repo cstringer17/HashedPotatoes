@@ -59,12 +59,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="card-body">
 
-        <input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
-        <label id="counter" for="passwordlength"></label><br>
+
 
                 <form action="welcome.php" method="post" enctype="multipart/form-data">
                     <?php
-
                     if (isset($password)) {
                         echo "<h4>" . $password . "</h4>";
                     }
@@ -88,10 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
     </div>
 
-        if (isset($password)) {
-            echo $password;
-        }
-        ?>
+
     </form>
 
     <script>
