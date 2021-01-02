@@ -52,9 +52,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $password_err = "Please enter a password.";
     } elseif (strlen(trim($_POST["password"])) < 6) {
         $password_err = "Password must have atleast 6 characters.";
-    } elseif (strlen(trim($_POST["password"])) > 255){
+    } elseif (strlen(trim($_POST["password"])) > 255) {
         $password_err = "The max password length is 255 characters!";
-    } else{
+    } else {
         $password = trim($_POST["password"]);
     }
 
@@ -124,6 +124,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .wrapper {
             width: 350px;
             padding: 20px;
+            margin-left: 40%;
+            margin-top: 5%;
         }
 
         meter {
@@ -138,9 +140,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             background-color: rgba(0, 0, 0, 0.1);
             opacity: 0.7;
         }
-
-       
-
     </style>
 </head>
 
@@ -186,7 +185,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         4: "Strong"
     }
 
-    var color ={
+    var color = {
         0: "Red",
         1: "Orange",
         2: "Yellow",

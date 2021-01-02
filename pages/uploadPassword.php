@@ -67,9 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo $validationErrorText;
         }
     }
-} else {
-    echo "prepare fail";
-}
+
 
 ?>
 

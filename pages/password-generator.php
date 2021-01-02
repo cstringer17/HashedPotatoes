@@ -29,8 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     for ($i = 0; $i < $len; ++$i) {
         $password .= $string[ord($random[$i]) % $string_length];
     }
-} else {
-    echo "Generate a new Password!";
 }
 ?>
 
@@ -51,28 +49,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-    <form action="welcome.php" method="post" enctype="multipart/form-data">
+    <div class="card container-sm" style="width: 18rem;">
 
-        <br><input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
-        <label id="counter" for="passwordlength"></label><br>
+        <div class="card-body">
 
-        <input type="checkbox" id="bigalphabet" name="bigalphabet">
-        <label for="bigalphabet">A-Z</label><br>
 
-        <input type="checkbox" id="zerotonine" name="zerotonine">
-        <label for="zerotonine"> 0-9</label><br>
+            <form action="welcome.php" method="post" enctype="multipart/form-data">
+                <?php
 
-        <input type="checkbox" id="specialchar" name="specialchar">
-        <label for="specialchar"> !@#$%^&*</label><br>
+                if (isset($password)) {
+                    echo "<h4>" . $password . "</h4>";
+                }
+                ?>
+                <br><input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
+                <label id="counter" for="passwordlength"></label><br>
 
-        <button class="btn btn-dark" type="submit">Generate Password</button><br>
-        <br>
-        <?php
+                <input type="checkbox" id="bigalphabet" name="bigalphabet">
+                <label for="bigalphabet">A-Z</label><br>
 
-        if (isset($password)) {
-            echo $password;
-        }
-        ?>
+                <input type="checkbox" id="zerotonine" name="zerotonine">
+                <label for="zerotonine"> 0-9</label><br>
+
+                <input type="checkbox" id="specialchar" name="specialchar">
+                <label for="specialchar"> !@#$%^&*</label><br>
+
+                <button class="btn btn-dark" type="submit">Generate Password</button><br>
+                <br>
+
+
+        </div>
+    </div>
+
     </form>
 
     <script>
