@@ -10,6 +10,7 @@ require_once("tools/loginCheck.php");
     <meta charset="UTF-8">
     <title>Welcome</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-darkmode@0.7.0/dist/darktheme.css" />
     <style type="text/css">
         body {
             font: 14px sans-serif;
@@ -19,6 +20,9 @@ require_once("tools/loginCheck.php");
 </head>
 
 <body>
+    <?php include("tools/darkmode.php")
+    ?>
+
     <div class="page-header">
         <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to Hashed Potatoes</h1>
     </div>
