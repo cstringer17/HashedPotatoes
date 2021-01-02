@@ -19,6 +19,7 @@ function createCard($row)
     echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["password"] .  '</h6>';
     echo '<h6 class="card-subtitle mb-2 text-muted">' . $row["keyy"] .  '</h6>';
     echo '<h6 class="card-subtitle mb-2 text-muted" onclick="copyPassword(this)">' . decodePassword($row["password"], $row["keyy"])  .  '</h6>';
+    echo '<a href="deleteEntry.php?id=' .  $row["idpasswordEntrys"] .  '   ">Delete</a>';
     echo '</div></div><br>';
 }
 
