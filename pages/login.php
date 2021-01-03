@@ -6,12 +6,6 @@ if (isset($_POST['h-captcha-response'])) {
 
     curl_setopt($ch, CURLOPT_URL, "https://hcaptcha.com/siteverify");
     curl_setopt($ch, CURLOPT_POST, 1);
-    // curl_setopt(
-    //     $ch,
-    //    CURLOPT_POSTFIELDS,
-    //     "secret=ba469c58-befa-4d2a-8d3e-e4e8368dc029&
-    // response=" . $_POST['h-captcha-response']
-    // );
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('secret' => '0x2851cB1913800AdB0AC73529834c48Ab622f86eA', 'response' => $_POST['h-captcha-response'])));
 
     // Receive server response ...

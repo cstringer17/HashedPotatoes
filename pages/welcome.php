@@ -1,9 +1,6 @@
 <?php
 session_start();
 require_once("tools/loginCheck.php");
-
-
-
 ?>
 
 <!DOCTYPE html>
