@@ -55,7 +55,7 @@ function decodePassword($encoded, $key)
         <br>
         <a class="btn btn-dark" href="uploadPassword.php">New Password</a>
         <a class="btn btn-dark" href="welcome.php">Back to Home</a>
-    </div>
+    </div><br>
 
     <?php
     if ($result = mysqli_query($mysqli, "SELECT * FROM passwordentrys WHERE userid = " . $_SESSION["id"])) {
