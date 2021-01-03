@@ -105,7 +105,7 @@ if (!is_file($profilePicture)) {
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="">First Name</span>
                         </div>
-                        <input value="<?php echo $firstname ?>" name="firstName" type="text" class="form-control">
+                        <input value="<?php echo $firstname ?>" name="firstname" type="text" class="form-control">
                     </div>
                     <br>
                     <div class="container input-group">
@@ -120,7 +120,7 @@ if (!is_file($profilePicture)) {
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="">Last Name</span>
                         </div>
-                        <input value="<?php echo $lastname ?>" name="lastName" type="text" class="form-control">
+                        <input value="<?php echo $lastname ?>" name="lastname" type="text" class="form-control">
                     </div>
                 </div>
             </div>
