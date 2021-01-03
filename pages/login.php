@@ -1,6 +1,29 @@
 <?php
 // Initialize the session
 session_start();
+if (isset($_POST['h-captcha-response'])) {
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, "https://hcaptcha.com/siteverify");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array('secret' => '0x2851cB1913800AdB0AC73529834c48Ab622f86eA', 'response' => $_POST['h-captcha-response'])));
+
+    // Receive server response ...
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $server_output = curl_exec($ch);
+
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    if ($httpCode == 400) {
+        /* Handle 400 here. */
+        echo "Error: " . curl_error($ch);
+    }
+
+    $decoded_response  = json_decode($server_output, true);
+    $_SESSION["data"] = $decoded_response;
+    curl_close($ch);
+}
+
 
 // Check session for user
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
@@ -14,9 +37,15 @@ require_once "config.php";
 // Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = "";
+$captcha_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (!$decoded_response["success"] == true) {
+        $captcha_err = "Captcha could not verify you response, please try again";
+    }
+
 
     // Check if username is empty
     if (empty(trim($_POST["username"]))) {
@@ -33,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if Input is empty
-    if (empty($username_err) && empty($password_err)) {
+    if (empty($username_err) && empty($password_err) && empty($captcha_err)) {
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
 
         if ($stmt = $mysqli->prepare($sql)) {
@@ -94,6 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-darkmode@0.7.0/dist/darktheme.css" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <script src="https://hcaptcha.com/1/api.js" async defer></script>
     <style type="text/css">
         body {
             font: 14px sans-serif;
@@ -112,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include("tools/darkmode.php")
     ?>
     <div class="wrapper">
-    <img src="../images/Hash_Borwn.png" alt="Hash">
+        <img src="../images/Hash_Borwn.png" alt="Hash">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
@@ -125,6 +155,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label>Password</label>
                 <input data-toggle="password" class="form-control" name="password" type="password" placeholder="Enter the password">
                 <span class="help-block"><?php echo $password_err; ?></span>
+                <div class="h-captcha" data-sitekey="fe6e84c7-14c6-43e7-97d0-ff0f3c22b1c6"></div>
+                <span class="help-block"><?php echo $captcha_err; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
@@ -135,4 +167,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+
 </html>
