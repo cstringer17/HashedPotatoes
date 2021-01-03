@@ -1,20 +1,23 @@
 <?php
-session_start();
 
+
+//get information
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     require_once "config.php";
     //data to enter
 
-    $sql = "INSERT INTO passwordentrys (name, password, url, userid, username,keyy) VALUES (?, ?, ?, ? ,?,?)";
+    //$sql = "UPDATE passwordentrys WHERE idpasswordEntrys=" .  . " (name, password, url, userid, username,keyy) VALUES (?, ?, ?, ? ,?,?)";
+
+    $sql = "UPDATE passwordentrys SET name = ? , password = ?, url = ?, username = ?, keyy = ? WHERE idpasswordEntrys=" . $_POST["id"];
 
     $validation = true;
     $validationErrorText = "";
 
     if ($stmt = $mysqli->prepare($sql)) {
         // Bind variables to the prepared statement as parameters
-        $stmt->bind_param("ssssss", $param_name, $param_password, $param_url, $param_userid, $param_username, $param_keyy);
+        $stmt->bind_param("sssss", $param_name, $param_password, $param_url, $param_username, $param_keyy);
 
         if (strlen($_POST["name"]) >= 45) {
             $validation = false;
@@ -75,6 +78,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+
+    require_once("config.php");
+
+    if ($result = mysqli_query($mysqli, "SELECT * FROM passwordentrys WHERE idpasswordEntrys = " . $_GET["id"])) {
+        $row = mysqli_fetch_array($result);
+
+        $url = $row["url"];
+        $name = $row["name"];
+        $username = $row["username"];
+        $key = $row["keyy"];
+        $id = $row["idpasswordEntrys"];
+
+        //decrypt password
+        $password = decodePassword($row["password"], $key);
+    }
+}
+
+
+function decodePassword($encoded, $key)
+{
+    $decoded = base64_decode($encoded);
+    $nonce = mb_substr($decoded, 0, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, '8bit');
+    $ciphertext = mb_substr($decoded, SODIUM_CRYPTO_SECRETBOX_NONCEBYTES, null, '8bit');
+    $plaintext = sodium_crypto_secretbox_open($ciphertext, $nonce, $key);
+    return $plaintext;
+}
 ?>
 
 <!DOCTYPE html>
@@ -82,63 +112,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <head>
     <meta charset="UTF-8">
-    <title>Passwords</title>
+    <title>Edit Password Entry</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-darkmode@0.7.0/dist/darktheme.css" />
     <style type="text/css">
-        body {
-            font: 14px sans-serif;
-            text-align: center;
-        }
+
     </style>
 </head>
 
 <body>
-    <?php include("tools/darkmode.php") ?>
-    <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Do you want to upload a password?</h1>
-    <a href="passwordmanager.php" class="btn btn-dark">Back to PWManager</a>
-    <br>
-    <br>
+    <div class="container">
+        <?php
+        include("tools/darkmode.php")
+        ?>
+        <form action="editEntry.php" method="POST">
+            <input name="id" type="text" readonly value="<?php echo $id ?>">
+            <br>
+            <br>
+            <input name="username" type="text" value="<?php echo $username ?>">
+            <br>
+            <br>
+            <input name="password" type="text" value="<?php echo $password ?>">
+            <br>
+            <br>
+            <input name="name" type="text" value="<?php echo $name ?>">
+            <br>
+            <br>
+            <input name="url" type="text" value="<?php echo $url ?>">
+            <br>
+            <br>
+            <button class="btn btn-success">Save Changes</button>
+        </form>
+    </div>
 
-    <form action="uploadPassword.php" method="post" enctype="multipart/form-data">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm">
-                    <div class="container input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Username</span>
-                        </div>
-                        <input name="username" type="text" maxlength="45" required="true" class="form-control">
-                    </div>
-                    <br>
-                    <div class="container input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Password</span>
-                        </div>
-                        <input name="password" type="password" maxlength="255" required="true" class="form-control">
-                    </div>
-                </div>
-                <div class="col-sm">
-                    <div class="container input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Url</span>
-                        </div>
-                        <input name="url" type="text" maxlength="255" required="true" class="form-control">
-                    </div>
-                    <br>
-                    <div class="container input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="">Name</span>
-                        </div>
-                        <input name="name" type="text" maxlength="45" required="true" class="form-control">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br>
-        <button class="btn btn-dark" type="submit">Save</button>
-
-    </form>
 </body>
-
-</html>

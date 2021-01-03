@@ -146,8 +146,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-<?php include("tools/darkmode.php")
-    ?>
     <div class="wrapper">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
@@ -176,6 +174,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             </div>
             <p>Already have an account? <a href="login.php">Login here</a>.</p>
+            <br>
+            <?php include("tools/darkmode.php")
+            ?>
         </form>
     </div>
 </body>
@@ -218,4 +219,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://unpkg.com/bootstrap-show-password@1.2.1/dist/bootstrap-show-password.min.js"></script>
+
 </html>
