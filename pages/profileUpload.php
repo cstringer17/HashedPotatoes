@@ -16,11 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Bind variables to the prepared statement as parameters
         $stmt->bind_param("sss", $param_firstname, $param_lastname, $param_email);
 
-        if (strlen($_POST["lastName"]) >= 50) {
+        if (strlen($_POST["lastname"]) >= 50) {
             $validation = false;
             $validationErrorText .= "The name cannot be longer than 50 characters <br>";
         }
-        if (strlen($_POST["firstName"]) >= 50) {
+        if (strlen($_POST["firstname"]) >= 50) {
             $validation = false;
             $validationErrorText .= "The password cannot be longer than 50 characters <br>";
         }

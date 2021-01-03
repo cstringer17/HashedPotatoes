@@ -14,7 +14,7 @@ require_once "config.php";
 $param_id = $_SESSION["id"];
 $profilePicture = "../images/placeholder-profile.jpg";
 
-$sql = "SELECT profilepicture FROM users WHERE id=" . $param_id;
+$sql = "SELECT * FROM users WHERE id=" . $param_id;
 //prepare and execute statement
 if ($stmt = $mysqli->prepare($sql)) {
     $stmt->execute();
@@ -22,11 +22,12 @@ if ($stmt = $mysqli->prepare($sql)) {
 }
 //get statement Result and set the Profile picture accordingly
 while ($row = mysqli_fetch_array($result)) {
-    foreach ($row as $r) {
-        $profilePicture = $r;
-    }
-}
+        $profilePicture = $row["profilepicture"];
+        $email = $row["email"];
+        $firstname = $row["firstname"];
+        $lastname = $row["lastname"];
 
+}
 if (!is_file($profilePicture)) {
     $profilePicture = "../images/placeholder-profile.jpg";
 }
@@ -104,14 +105,14 @@ if (!is_file($profilePicture)) {
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="">First Name</span>
                         </div>
-                        <input name="firstName" type="text" class="form-control">
+                        <input value="<?php echo $firstname ?>" name="firstname" type="text" class="form-control">
                     </div>
                     <br>
                     <div class="container input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="">E-Mail</span>
                         </div>
-                        <input name="email" type="email" class="form-control">
+                        <input value="<?php echo $email ?>" name="email" type="email" class="form-control">
                     </div>
                 </div>
                 <div class="col-sm">
@@ -119,7 +120,7 @@ if (!is_file($profilePicture)) {
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="">Last Name</span>
                         </div>
-                        <input name="lastName" type="text" class="form-control">
+                        <input value="<?php echo $lastname ?>" name="lastname" type="text" class="form-control">
                     </div>
                 </div>
             </div>
