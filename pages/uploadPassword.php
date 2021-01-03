@@ -142,7 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <br>
     <?php
     include("tools/darkmode.php");
-    include("tools/password-generator.php");
+    include("tools/password-generator-get.php");
     ?>
 </body>
 

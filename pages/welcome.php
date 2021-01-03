@@ -33,7 +33,7 @@ require_once("tools/loginCheck.php");
     </p>
 
     <?php
-    include("tools/password-generator.php");
+    include("tools/password-generator-post.php");
     include("tools/footer.php");
     ?>
 </body>

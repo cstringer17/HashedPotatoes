@@ -76,15 +76,11 @@ function decodePassword($encoded, $key)
         <br>
         <a class="btn btn-dark" href="uploadPassword.php">New Password</a>
         <a class="btn btn-dark" href="welcome.php">Back to Home</a>
-<<<<<<< HEAD
     </div>
     <br>
     <div class="container container-fluid">
         <div class="row">
             <?php
-=======
-    </div><br>
->>>>>>> 37cc88ad3a462ac161f391046941a7e28e4aa4b2
 
             $counter = 0;
 

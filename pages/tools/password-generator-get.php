@@ -1,6 +1,6 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["passwordlength"])) {
     require '../vendor/autoload.php';
 
     //set password specification
@@ -9,19 +9,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $numbers = '1234567890';
     $special = '!@#$%^&*';
     //set passwordlength equal to slider
-    $len = $_POST["passwordlength"];
+    $len = $_GET["passwordlength"];
     //take OpenSSL random pseudeo bytes function and set length with $len
     $random = openssl_random_pseudo_bytes($len);
     //Set $string = to $alphasmall because we need somehting already in $string
     $string = $alphasmall;
     // check if checkbox is set and add passowrd specification to $string if set
-    if (isset($_POST["bigalphabet"])) {
+    if (isset($_GET["bigalphabet"])) {
         $string .= $alphabig;
     }
-    if (isset($_POST["zerotonine"])) {
+    if (isset($_GET["zerotonine"])) {
         $string .= $numbers;
     }
-    if (isset($_POST["specialchar"])) {
+    if (isset($_GET["specialchar"])) {
         $string .= $special;
     }
 
@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div id="message"></div>
             <br>
 
-            <form action="welcome.php" method="post" enctype="multipart/form-data">
+            <form method="get" enctype="multipart/form-data">
                 <br><input type="range" min="5" max="128" value="8" class="slider" name="passwordlength" id="passwordlength"><br>
                 <label id="counter" for="passwordlength"></label><br>
 
