@@ -11,7 +11,7 @@ require_once("tools/loginCheck.php");
     <title>Welcome</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lux/bootstrap.min.css" integrity="sha384-9+PGKSqjRdkeAU7Eu4nkJU8RFaH8ace8HGXnkiKMP9I9Te0GJ4/km3L1Z8tXigpG" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-darkmode@0.7.0/dist/darktheme.css" />
-    <style type="text/css">
+    <style>
         body {
             font: 14px sans-serif;
             text-align: center;
@@ -34,7 +34,6 @@ require_once("tools/loginCheck.php");
 
     <?php
     include("tools/password-generator-post.php");
-    include("tools/footer.php");
     ?>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
