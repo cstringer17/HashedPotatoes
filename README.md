@@ -22,10 +22,7 @@ After that you can run the PHP Files, maybe start with [Register Page](./pages/r
 
 ## Installation
 
-First clone the repository
-
-
-`git clone https://github.com/cstringer17/HashedPotatoes.git`
+First download the [source code](https://github.com/cstringer17/HashedPotatoes/releases/tag/v1.0)
 
 Then cd into the root folder and run the following composer command to install the dependencies
 Download composer here: https://getcomposer.org/download/
