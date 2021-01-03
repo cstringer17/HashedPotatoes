@@ -1,8 +1,8 @@
-DROP USER 'test'@'%';
+DROP USER 'test'@'%' IF EXISTS;
 
 CREATE USER 'test'@'%' IDENTIFIED BY 'qwert_1337';
 
-DROP DATABASE hashedpotatoes;
+DROP DATABASE hashedpotatoes IF EXISTS;
 
 CREATE DATABASE hashedpotatoes CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 

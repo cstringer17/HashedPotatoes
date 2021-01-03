@@ -133,7 +133,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 350px;
             padding: 20px;
             margin-left: 40%;
-            margin-top: 5%;
+            margin-top: 4%;
+        }
+
+        #logo {
+            padding-left: 85px;
+            padding-bottom: 30px;
         }
     </style>
 </head>
@@ -141,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
     <div class="wrapper">
-        <img src="../images/Hash_Borwn.png" alt="Hash">
+        <img id="logo" src="../images/Hash_Borwn.png" alt="Hash">
         <h2>Login</h2>
         <p>Please fill in your credentials to login.</p>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
