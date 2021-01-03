@@ -18,8 +18,15 @@ if (isset($_POST['h-captcha-response'])) {
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     $server_output = curl_exec($ch);
-    $_SESSION["data"] = $server_output;
 
+    $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    if ($httpCode == 400) {
+        /* Handle 400 here. */
+        echo "Error: " . curl_error($ch);
+    }
+
+    $decoded_response  = json_decode($server_output, true);
+    $_SESSION["data"] = $decoded_response;
     curl_close($ch);
 }
 
@@ -36,9 +43,15 @@ require_once "config.php";
 // Define variables and initialize with empty values
 $username = $password = "";
 $username_err = $password_err = "";
+$captcha_err = "";
 
 // Processing form data when form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    if (!$decoded_response["success"] == true) {
+        $captcha_err = "Captcha could not verify you response, please try again";
+    }
+
 
     // Check if username is empty
     if (empty(trim($_POST["username"]))) {
@@ -55,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Check if Input is empty
-    if (empty($username_err) && empty($password_err)) {
+    if (empty($username_err) && empty($password_err) && empty($captcha_err)) {
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
 
         if ($stmt = $mysqli->prepare($sql)) {
@@ -148,7 +161,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label>Password</label>
                 <input data-toggle="password" class="form-control" name="password" type="password" placeholder="Enter the password">
                 <span class="help-block"><?php echo $password_err; ?></span>
-                <div class="h-captcha" data-sitekey="fe6e84c7-14c6-43e7-97d0-ff0f3c22b1c6" data-theme="dark"></div>
+                <div class="h-captcha" data-sitekey="fe6e84c7-14c6-43e7-97d0-ff0f3c22b1c6"></div>
+                <span class="help-block"><?php echo $captcha_err; ?></span>
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Login">
