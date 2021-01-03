@@ -12,6 +12,7 @@
 
 
 ![PHP Composer](https://github.com/cstringer17/HashedPotatoes/workflows/PHP%20Composer/badge.svg)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d28d7717-1f9c-4c77-a167-fd02b5501a69/deploy-status)](https://app.netlify.com/sites/nostalgic-archimedes-e8ebba/deploys)
 
 # Password Playground in PHP
 
