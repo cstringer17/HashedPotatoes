@@ -6,7 +6,7 @@ $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
 session_start();
 require_once "config.php";
-// Check if image file is a actual image or fake image
+// Check if image file is a actual image
 if (isset($_POST["submit"])) {
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
   if ($check !== false) {
@@ -46,9 +46,6 @@ if ($uploadOk == 0) {
 } else {
   if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
     //Write $target_file to db
-
-
-
     //Prepare sql statement
     $sql = "UPDATE users SET profilepicture = ? WHERE id = ?";
 

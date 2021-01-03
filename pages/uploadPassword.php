@@ -5,17 +5,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     require_once "config.php";
-    //data to enter
 
+    //SQL Statement
     $sql = "INSERT INTO passwordentrys (name, password, url, userid, username,keyy) VALUES (?, ?, ?, ? ,?,?)";
 
+    //Initialiaze validation variables
     $validation = true;
     $validationErrorText = "";
 
+    //Prepare statement
     if ($stmt = $mysqli->prepare($sql)) {
         // Bind variables to the prepared statement as parameters
         $stmt->bind_param("ssssss", $param_name, $param_password, $param_url, $param_userid, $param_username, $param_keyy);
 
+
+        //Validate Data for length
         if (strlen($_POST["name"]) >= 45) {
             $validation = false;
             $validationErrorText .= "The name cannot be longer than 45 characters <br>";
@@ -33,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $validationErrorText .= "The username cannot be longer than 45 characters <br>";
         }
 
+        //Validate data for isset
         if (!(isset($_POST["name"]) && isset($_POST["password"]) && isset($_POST["url"]) && isset($_POST["username"]))) {
             $validation = false;
             $validationErrorText .= "Please make sure all fields are filled out! <br>";
@@ -44,7 +49,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $ciphertext = sodium_crypto_secretbox($_POST["password"], $nonce, $key);
         $encoded = base64_encode($nonce . $ciphertext);
 
-
+        //If validation passed then set parameters and execute 
         if ($validation) {
             // Set parameters
             $param_name =  htmlentities($_POST["name"]);
@@ -55,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $param_username = htmlentities($_POST["username"]);
 
 
-            // Attempt to execute the prepared statement
+            // Attempt to execute the prepared statement and redirect if successful
             if ($stmt->execute()) {
                 header("location: passwordmanager.php");
             } else {
@@ -99,6 +104,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <br>
     <br>
 
+    <!--
+        Form to upload password
+        includes client-side validation
+     -->
     <form action="uploadPassword.php" method="post" enctype="multipart/form-data">
         <div class="container">
             <div class="row">
