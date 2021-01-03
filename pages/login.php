@@ -153,7 +153,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
                 <label>Password</label>
                 <input data-toggle="password" class="form-control" name="password" type="password" placeholder="Enter the password">
-                <span class="help-block"><?php echo $password_err; ?></span>
+                <span class="help-block"><?php echo $password_err; ?></span><br>
                 <div class="h-captcha" data-sitekey="fe6e84c7-14c6-43e7-97d0-ff0f3c22b1c6"></div>
                 <span class="help-block"><?php echo $captcha_err; ?></span>
             </div>

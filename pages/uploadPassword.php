@@ -94,7 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <?php include("tools/darkmode.php") ?>
     <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Do you want to upload a password?</h1>
     <a href="passwordmanager.php" class="btn btn-dark">Back to PWManager</a>
     <br>
@@ -137,8 +136,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <br>
         <button class="btn btn-dark" type="submit">Save</button>
+        <br>
 
     </form>
+    <br>
+    <?php
+    include("tools/darkmode.php");
+    include("tools/password-generator.php");
+    ?>
 </body>
 
 </html>
